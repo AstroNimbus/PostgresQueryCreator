@@ -27,6 +27,10 @@ namespace PostgresQueryCreator.Util
         {
             return SingleQuoteString(value.ToString("O"));
         }
+        public static string ConvertToSafeString<T>(T _)
+        {
+            throw new PqcException($"Can not convert {typeof(T)} to safe string");
+        }
         public static string ConvertToSafeColumn(string column_name, string prefix = null)
         {
             string output = DoubleQuoteString(column_name);
@@ -35,10 +39,6 @@ namespace PostgresQueryCreator.Util
                 output = prefix + "." + output;
             }
             return output;
-        }
-        public static string ConvertToSafeString<T>(T _)
-        {
-            throw new PqcException($"Can not convert {typeof(T)} to safe string");
         }
         private static string SingleQuoteString(string value)
         {
