@@ -46,6 +46,6 @@ jobs:
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"AstroNimbus_PostgresQueryCreator" /o:"astronimbus" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
           msbuild PostgresQueryCreator\PostgresQueryCreator.csproj -t:rebuild -property:Configuration=Release -r
-          msbuild PostgresQueryCreator.Tests\PostgresQueryCreator.Tests.csproj -t:rebuild -property:Configuration=Release -r -v:d
+          msbuild PostgresQueryCreator.Tests\PostgresQueryCreator.Tests.csproj -t:rebuild -property:Configuration=Release -r -v:n
           dotnet test PostgresQueryCreator.Tests --configuration Release --logger trx /p:CollectCoverage=true
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
