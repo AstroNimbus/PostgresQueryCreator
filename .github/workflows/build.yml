@@ -45,5 +45,5 @@ jobs:
         shell: powershell
         run: |
           .\.sonar\scanner\dotnet-sonarscanner begin /k:"AstroNimbus_PostgresQueryCreator" /o:"astronimbus" /d:sonar.login="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
-          run: msbuild PostgresQueryCreator\PostgresQueryCreator.csproj -t:rebuild -verbosity:diag -property:Configuration=Release
+          msbuild PostgresQueryCreator\PostgresQueryCreator.csproj -t:rebuild -verbosity:diag -property:Configuration=Release
           .\.sonar\scanner\dotnet-sonarscanner end /d:sonar.login="${{ secrets.SONAR_TOKEN }}"
