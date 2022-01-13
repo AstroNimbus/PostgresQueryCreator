@@ -14,7 +14,7 @@ namespace PostgresQueryCreator
 
         public PqcException(string message)
     : base(message) { }
-     protected internal PqcException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+     protected PqcException(SerializationInfo info, StreamingContext context) : base(info, context) { }
 
     }
 }
