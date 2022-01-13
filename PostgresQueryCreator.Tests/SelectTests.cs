@@ -3,7 +3,7 @@ using PostgresQueryCreator;
 
 namespace PostgresQueryCreator.Tests
 {
-    public class WhereTests
+    public class SelectTests
     {
         [SetUp]
         public void Setup()

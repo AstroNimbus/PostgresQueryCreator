@@ -4,12 +4,12 @@ using System.Text;
 
 namespace PostgresQueryCreator
 {
-    public class PQCException : Exception
+    public class PqcException : Exception
     {
-        public PQCException(string? message, Exception? innerException)
+        public PqcException(string message, Exception innerException)
        : base(message, innerException) { }
 
-        public PQCException(string? message)
+        public PqcException(string message)
     : base(message) { }
     }
 }

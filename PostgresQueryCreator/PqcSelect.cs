@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Linq;
-using static PostgresQueryCreator.Util.PQCHelpers;
+using static PostgresQueryCreator.Util.PqcHelpers;
 namespace PostgresQueryCreator
 {
-    public class PQCQuery
+    public class PqcSelect
     {
         public string Table { get; set; }
         public string Schema { get; set; }
@@ -13,7 +13,7 @@ namespace PostgresQueryCreator
         public int? Limit { get; set; }
         public int? Offset { get; set; }
         public bool Distinct { get; set; } = false;
-        public PQCQuery(string table, string? schema, int? limit, int? offset, List<string> columnNames = null, bool distinct = false)
+        public PqcSelect(string table, int? limit, int? offset, List<string> columnNames = null, string schema = null, bool distinct = false)
         {
             Table = table ?? throw new ArgumentNullException(nameof(table));
             Schema = schema;
@@ -39,7 +39,9 @@ namespace PostgresQueryCreator
             }
             else
             {
-                string.Join(", ", ColumnNames.Select(column => ConvertToSafeColumn(column)));
+                QueryString.Append(
+                    string.Join(", ", ColumnNames.Select(column => ConvertToSafeColumn(column)))
+                );
             }
             return QueryString.ToString();
         }

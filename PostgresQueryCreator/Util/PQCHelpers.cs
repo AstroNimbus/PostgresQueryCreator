@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PostgresQueryCreator.Util
 {
-    public static class PQCHelpers
+    public static class PqcHelpers
     {
         public static string ConvertToSafeString(string value)
         {
@@ -36,9 +36,9 @@ namespace PostgresQueryCreator.Util
             }
             return output;
         }
-        public static string ConvertToSafeString<T>(T value)
+        public static string ConvertToSafeString<T>(T _)
         {
-            throw new PQCException($"Can not convert {typeof(T)} to safe string");
+            throw new PqcException($"Can not convert {typeof(T)} to safe string");
         }
         private static string SingleQuoteString(string value)
         {

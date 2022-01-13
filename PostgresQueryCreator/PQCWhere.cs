@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Text;
-using static PostgresQueryCreator.Util.PQCHelpers;
+using static PostgresQueryCreator.Util.PqcHelpers;
 namespace PostgresQueryCreator
 {
-    public class PQCWhere<T>
+    public class PqcWhere<T>
     {
         public string Column { get; set; }
         public string Comparer { get; set; }
         public T Value { get; private set; }
 
-        public PQCWhere(string column, string comparer, T value)
+        public PqcWhere(string column, string comparer, T value)
         {
             Column = column;
             Comparer = comparer;

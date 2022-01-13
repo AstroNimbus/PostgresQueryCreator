@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
-using static PostgresQueryCreator.Util.PQCHelpers;
+using static PostgresQueryCreator.Util.PqcHelpers;
 
 namespace PostgresQueryCreator.Tests
 {
