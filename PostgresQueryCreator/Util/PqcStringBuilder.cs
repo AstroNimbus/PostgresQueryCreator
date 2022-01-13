@@ -16,7 +16,6 @@ namespace PostgresQueryCreator.Util
             StringList.Add(stringToAppend);
             return this;
         }
-        public static implicit operator string(PqcStringBuilder d) => d.ToString();
         public override string ToString()
         {
             return string.Join(" ", StringList);

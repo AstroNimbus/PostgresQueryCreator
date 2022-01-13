@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using System.Linq;
 using static PostgresQueryCreator.Util.PqcHelpers;
+using PostgresQueryCreator.Util;
+
 namespace PostgresQueryCreator
 {
     public class PqcSelect
@@ -32,11 +34,11 @@ namespace PostgresQueryCreator
         }
         public override string ToString()
         {
-            StringBuilder QueryString = new StringBuilder();
-            QueryString.Append("SELECT ");
+            PqcStringBuilder QueryString = new PqcStringBuilder();
+            QueryString.Append("SELECT");
             if (Distinct)
             {
-                QueryString.Append("DISTINCT ");
+                QueryString.Append("DISTINCT");
             }
             if(ColumnNames.Count == 0)
             {
@@ -48,13 +50,31 @@ namespace PostgresQueryCreator
                     string.Join(", ", ColumnNames.Select(column => ConvertToSafeColumn(column)))
                 );
             }
-            if(Wheres.Count != 0)
+            QueryString.Append($"FROM");
+            if (!string.IsNullOrEmpty(Schema))
             {
-                QueryString.Append("WHERE ");
-          );
+                QueryString.Append($"{Schema}.{Table}");
+            }
+            else
+            {
+                QueryString.Append($"{Table}");
+
+            }
+
+            if (Wheres.Count != 0)
+            {
+                QueryString.Append("WHERE"); 
                 QueryString.Append(
-                           string.Join("AND ", Wheres.Select(where => where.ToString()))
-                       );
+                    string.Join("AND ", Wheres.Select(where => where.ToString()))
+                );
+            }
+            if(Limit != null)
+            {
+                QueryString.Append($"LIMIT {Limit}");
+            }
+            if (Offset != null)
+            {
+                QueryString.Append($"OFFSET {Offset}");
             }
             return QueryString.ToString();
         }
