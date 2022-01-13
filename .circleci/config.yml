@@ -23,6 +23,7 @@ jobs:
           working_directory: ~/PostgresQueryCreator.Tests/PostgresQueryCreator.Tests
           name: Run tests
           command: |
+            dotnet build |
             dotnet test
 
 # Invoke jobs via workflows
