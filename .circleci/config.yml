@@ -24,7 +24,7 @@ jobs:
           name: Run tests
           command: |
             dotnet build PostgresQueryCreator.Tests.csproj |
-            dotnet test
+            dotnet test --logger trx /p:CollectCoverage=true
 
 
 # Invoke jobs via workflows
