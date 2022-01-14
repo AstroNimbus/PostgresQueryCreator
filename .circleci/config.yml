@@ -22,9 +22,18 @@ jobs:
           command: |
             dotnet test PostgresQueryCreator.Tests.csproj --logger trx /p:CollectCoverage=true
       - run:
-          name: Download Sonarcloud Deps
-          command: |
+          name: Update Apt-Get
+          command: 
+            apt-get update -y && \
+            apt-get upgrade -y && \
+            apt-get dist-upgrade -y && \
+            apt-get -y autoremove && \
+            apt-get clean
+      - run:
+          name: Install Deps
+          command: 
             apt-get install zip -y
+            && rm -rf /var/lib/apt/lists/*      
       - sonarcloud/scan
 
 orbs:
