@@ -40,5 +40,6 @@ orbs:
 workflows:
   sonar-cloud-scan:
     jobs:
-      - test-and-scan
+      - test-and-scan:
+          context: SonarCloud
 
