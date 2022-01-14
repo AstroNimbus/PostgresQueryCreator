@@ -24,7 +24,7 @@ jobs:
       - run:
           name: Download Sonarcloud Deps
           command: |
-            apt install zip
+            apt-get install zip -y
       - sonarcloud/scan
 
 orbs:
