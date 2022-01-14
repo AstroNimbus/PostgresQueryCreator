@@ -24,11 +24,7 @@ jobs:
       - run:
           name: Update Apt
           command: 
-            apt update -y && \
-            apt upgrade -y && \
-            apt dist-upgrade -y && \
-            apt -y autoremove && \
-            apt clean
+            apt update -y
       - run:
           name: Install Deps
           command: 
